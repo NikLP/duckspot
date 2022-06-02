@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Contains duckspot.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+/**
+ * Implements hook_help().
+ */
+function duckspot_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Help text for the duckspot module.
+    case 'help.page.duckspot':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Help text here') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function duckspot_theme()
+{
+  return [
+    'duckspot_block' => [
+      'variables' => [
+        'body_text' => NULL,
+        'artists' => [],
+      ],
+    ],
+  ];
+}
+
+
+// function hello_world_theme($existing, $type, $theme, $path): array
+// {
+//   return [
+//     'hello_block' => [
+//       'variables' => [
+//         'body_text' => NULL,
+//         'artists' => [],
+//       ],
+//     ],
+//   ];
+// }
+
+
+// return [
+//   '#theme' => 'duckspot_block',
+//   '#body_text' => [
+//     '#markup' => $this->t('Showing @num artists', ['@num' => $num,]),
+//   ],
+//   '#artists' => $artist_list,
+// ];

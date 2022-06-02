@@ -1,0 +1,7 @@
+name: Duckspot
+description: Demonstrate Drupal 9 exposing Spotify API
+type: module
+package: Custom
+core_version_requirement: ^9
+dependencies:
+  - drupal:block

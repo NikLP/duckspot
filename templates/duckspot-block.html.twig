@@ -1,0 +1,15 @@
+{# {% for key, value in data %}
+	<strong>{{ key }}:</strong>
+	{{ value }}<br/>
+{% endfor %}
+ #}
+<div{{attributes}}>
+	{{ body_text }}
+  <ul>
+  {% for key, value in artists %}
+		<li>
+      <a href="{{ value.url }}">{{ value.name }}</a> - {{ value.genre }}
+    </li>
+	{% endfor %}
+  </ul>
+</div>
