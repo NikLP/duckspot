@@ -20,8 +20,8 @@ class DuckspotController extends ControllerBase
   {
     return [
       '#theme' => 'duckspot_page_artist',
-      '#artist' => $this->t('Artist page controller output 2'),
-      '#id' => $id
+      '#artist' => $this->t('Artist page controller output'),
+      '#id' => $id,
     ];
   }
 }

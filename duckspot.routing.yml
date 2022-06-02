@@ -3,5 +3,7 @@ duckspot.artist:
   defaults:
     _controller: '\Drupal\duckspot\Controller\DuckspotController::ArtistPage'
     _title: 'My first page in D8'
+    id: 1
   requirements:
     _permission: 'access duckspot artist'
+    id: '[a-zA-Z0-9]+'

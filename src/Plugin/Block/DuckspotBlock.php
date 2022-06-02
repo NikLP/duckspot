@@ -77,17 +77,17 @@ class DuckspotBlock extends BlockBase
       0 => [
         'name' => 'Bob',
         'genre' => 'Country',
-        'url' => 'http://google.com',
+        'url' => '/artist/1',
       ],
       1 => [
         'name' => 'Jon',
         'genre' => 'Rock',
-        'url' => 'http://google.com',
+        'url' => '/artist/2',
       ],
       2 => [
         'name' => 'Ted',
         'genre' => 'Bluegrass',
-        'url' => 'http://google.com',
+        'url' => '/artist/3',
       ],
     ];
 
