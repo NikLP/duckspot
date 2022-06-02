@@ -66,16 +66,38 @@ class DuckspotBlock extends BlockBase
     // if for some reason the block is not configured properly, add a sane default value
 
     if (!empty($config['duckspot_block_num_artists'])) {
-      $num = $config['duckspot_block_num_artists'];
+      $limit = $config['duckspot_block_num_artists'];
     } else {
-      $num = 5;
+      $limit = 5;
     }
 
-    // fetch artists array using method somewhere - dummy data
+    $artist_list = $this->_fetch_artists($limit);
+
+    return [
+      '#theme' => 'duckspot_block_artists',
+      '#body_text' => [
+        '#markup' => $this->t('Showing @num artists', ['@num' => $limit,]),
+      ],
+      '#artists' => $artist_list,
+    ];
+  }
+
+  protected function _fetch_artists(int $limit)
+  {
+
+    // fetch $limit artists from api
+
+    // $response = $this->httpClient->request('GET', 'https://api.spotify.com/v1/artists', [
+    //   'limit' => $limit,
+    //   'sort' => $sort,
+    // ]);
+
+    // build array
+    // return array
 
     $artist_list = [
       0 => [
-        'name' => 'Bob',
+        'name' => 'Jed',
         'genre' => 'Country',
         'url' => '/artist/1',
       ],
@@ -91,13 +113,6 @@ class DuckspotBlock extends BlockBase
       ],
     ];
 
-    return [
-      '#theme' => 'duckspot_block_artists',
-      '#body_text' => [
-        '#markup' => $this->t('Showing @num artists', ['@num' => $num,]),
-      ],
-      '#artists' => $artist_list,
-    ];
+    return $artist_list;
   }
-
 }
