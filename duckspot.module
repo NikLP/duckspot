@@ -30,33 +30,17 @@ function duckspot_help($route_name, RouteMatchInterface $route_match) {
 function duckspot_theme()
 {
   return [
-    'duckspot_block' => [
+    'duckspot_block_artists' => [
       'variables' => [
         'body_text' => NULL,
         'artists' => [],
       ],
     ],
+    'duckspot_page_artist' => [
+      'variables' => [
+        'artist' => NULL,
+        'id' => NULL,
+      ],
+    ],
   ];
 }
-
-
-// function hello_world_theme($existing, $type, $theme, $path): array
-// {
-//   return [
-//     'hello_block' => [
-//       'variables' => [
-//         'body_text' => NULL,
-//         'artists' => [],
-//       ],
-//     ],
-//   ];
-// }
-
-
-// return [
-//   '#theme' => 'duckspot_block',
-//   '#body_text' => [
-//     '#markup' => $this->t('Showing @num artists', ['@num' => $num,]),
-//   ],
-//   '#artists' => $artist_list,
-// ];

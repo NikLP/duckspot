@@ -92,7 +92,7 @@ class DuckspotBlock extends BlockBase
     ];
 
     return [
-      '#theme' => 'duckspot_block',
+      '#theme' => 'duckspot_block_artists',
       '#body_text' => [
         '#markup' => $this->t('Showing @num artists', ['@num' => $num,]),
       ],
