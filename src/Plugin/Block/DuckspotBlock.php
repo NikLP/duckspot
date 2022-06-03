@@ -4,6 +4,7 @@ namespace Drupal\duckspot\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\duckspot\Utility\DuckspotHelper;
 
 /**
  * Provides a 'DuckspotBlock' block.
@@ -15,6 +16,16 @@ use Drupal\Core\Form\FormStateInterface;
  */
 class DuckspotBlock extends BlockBase
 {
+  private $helper;
+
+  /**
+   * DuckspotBlock constructor.
+   */
+  public function __construct()
+  {
+    $this->helper = new DuckspotHelper();
+  }
+
   /**
    * {@inheritdoc}
    */
@@ -71,8 +82,8 @@ class DuckspotBlock extends BlockBase
       $limit = 5;
     }
 
-    $artist_list = $this->_fetch_artists($limit);
-
+    $artist_list = $this->helper->get_artists($limit);
+    //dpm($artist_list);
     return [
       '#theme' => 'duckspot_block_artists',
       '#body_text' => [
@@ -82,37 +93,4 @@ class DuckspotBlock extends BlockBase
     ];
   }
 
-  protected function _fetch_artists(int $limit)
-  {
-
-    // fetch $limit artists from api
-
-    // $response = $this->httpClient->request('GET', 'https://api.spotify.com/v1/artists', [
-    //   'limit' => $limit,
-    //   'sort' => $sort,
-    // ]);
-
-    // build array
-    // return array
-
-    $artist_list = [
-      0 => [
-        'name' => 'Jed',
-        'genre' => 'Country',
-        'url' => '/artist/1',
-      ],
-      1 => [
-        'name' => 'Jon',
-        'genre' => 'Rock',
-        'url' => '/artist/2',
-      ],
-      2 => [
-        'name' => 'Ted',
-        'genre' => 'Bluegrass',
-        'url' => '/artist/3',
-      ],
-    ];
-
-    return $artist_list;
-  }
 }

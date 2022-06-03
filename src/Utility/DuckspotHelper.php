@@ -2,11 +2,14 @@
 
 namespace Drupal\duckspot\Utility;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Class DuckspotHelper.
  */
 class DuckspotHelper
 {
+    private $client;
     private $client_id;
     private $client_secret;
     private static $artists = array();
@@ -14,6 +17,7 @@ class DuckspotHelper
     /* Constructor */
     public function __construct()
     {
+        $this->client = \Drupal::httpClient();
         $this->client_id = 'ea1ebf722c464c3fb8a85f612d42871d';
         $this->client_secret = 'f84be1b9668743c9a7d015df3170c3b7';
         $this->artists = array(
@@ -23,15 +27,29 @@ class DuckspotHelper
         );
     }
 
-    /* Getter function to read the client id */
-    public function get_id()
+    private function get_auth()
     {
-        return $this->client_id;
+        try {
+            $authorization = $this->client->request('POST', 'https://accounts.spotify.com/api/token', [
+                'form_params' => [
+                    'grant_type' => 'client_credentials',
+
+                    'client_id' => $this->client_id,
+                    'client_secret' => $this->client_secret,
+                ]
+            ]);
+
+            return $response = json_decode($authorization->getBody());
+        } catch (GuzzleException $e) {
+            return \Drupal::logger('sdfdsf')->error($e);
+        }
     }
 
-    /* Getter function to read the client secret */
-    public function get_secret()
+    public function get_artists(int $limit)
     {
-        return $this->client_secret;
+        $random = $this->artists; // copy not reference
+        shuffle($random);
+        return array_slice($random, 0, 3);
+        // return array_slice($random, 0, $limit);
     }
 }

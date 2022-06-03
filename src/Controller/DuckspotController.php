@@ -11,25 +11,15 @@ use Drupal\duckspot\Utility\DuckspotHelper;
 class DuckspotController extends ControllerBase
 {
   private $helper;
-  private $client;
 
   /**
    * DuckspotController constructor.
    */
-  public function __construct() {
+  public function __construct()
+  {
     $this->helper = new DuckspotHelper();
-    $this->client = \Drupal::httpClient();
   }
 
-//   $response = $client->request('POST', 'http://httpbin.org/post', [
-//     'form_params' => [
-//         'field_name' => 'abc',
-//         'other_field' => '123',
-//         'nested_field' => [
-//             'nested' => 'hello'
-//         ]
-//     ]
-// ]);
 
   /**
    * Artist page.
@@ -39,13 +29,13 @@ class DuckspotController extends ControllerBase
    */
   public function ArtistPage($id)
   {
-
-
+    $artist_details = $this->helper->get_artists($id);
     
     return [
       '#theme' => 'duckspot_page_artist',
-      '#artist' => $this->t('Artist page controller output'),
+      '#artist' => $this->t('Artist page controller output is'),
       '#id' => $id,
+      //'#id' => $this->helper->get_secret(),
     ];
   }
 }
