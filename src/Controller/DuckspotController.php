@@ -20,22 +20,20 @@ class DuckspotController extends ControllerBase
     $this->helper = new DuckspotHelper();
   }
 
-
   /**
    * Artist page.
    *
    * @return string
-   *   Return Hello string.
+   *   Return render array of artist.
    */
   public function ArtistPage($id)
   {
-    $artist_details = $this->helper->get_artists($id);
-    
+    $artist_details = $this->helper->get_artist_details($id);
+    // dpm($artist_details);
+
     return [
       '#theme' => 'duckspot_page_artist',
-      '#artist' => $this->t('Artist page controller output is'),
-      '#id' => $id,
-      //'#id' => $this->helper->get_secret(),
+      '#artist' => $artist_details,
     ];
   }
 }

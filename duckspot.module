@@ -38,7 +38,7 @@ function duckspot_theme()
     ],
     'duckspot_page_artist' => [
       'variables' => [
-        'artist' => NULL,
+        'artist' => [],
         'id' => NULL,
       ],
     ],

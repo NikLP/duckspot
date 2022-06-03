@@ -38,7 +38,7 @@ class DuckspotBlock extends BlockBase
       '#type' => 'number',
       '#title' => $this->t('Number of Artists'),
       '#description' => $this->t('Select the number of artists to display (up to 20, in steps of 5).'),
-      '#default_value' => $config['duckspot_block_num_artists'] ?? '5',
+      // '#default_value' => $config['duckspot_block_num_artists'] ?? '5',
       '#min' => 5,
       '#max' => 20,
       '#step' => 5,
@@ -83,7 +83,7 @@ class DuckspotBlock extends BlockBase
     }
 
     $artist_list = $this->helper->get_artists($limit);
-    //dpm($artist_list);
+
     return [
       '#theme' => 'duckspot_block_artists',
       '#body_text' => [
