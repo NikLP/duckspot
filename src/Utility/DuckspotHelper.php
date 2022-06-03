@@ -67,31 +67,37 @@ class DuckspotHelper
     public function get_artists(int $limit)
     {
         // there's no "get a lot of artists out of nothing" api call so we've had to do this sadly.
-
+        // Get a randomized array of $limit IDs and smoosh them together with a separator.
         $random = $this->artists;
         shuffle($random);
         $ids = array_slice($random, 0, $limit);
-        dpm($ids);
+        $ids_string = implode(',', $ids);
 
         $auth = $this->get_auth();
+        try {
+            $request = $this->client->request('GET', 'https://api.spotify.com/v1/artists/?ids=' . $ids_string, [
+                'headers' => [
+                    'Authorization' => $auth->token_type . ' ' . $auth->access_token,
+                ]
+            ]);
+            $response = json_decode($request->getBody(), true);
+        } catch (GuzzleException $e) {
+            return \Drupal::logger('duckspot')->error($e);
+        }
 
-        // try {
-        //     $request = $this->client->request('GET', 'https://api.spotify.com/v1/artists/' . $id, [
-        //         'headers' => [
-        //             'Authorization' => $auth->token_type . ' ' . $auth->access_token,
-        //         ]
-        //     ]);
-        //     $artist = json_decode($request->getBody()); //true?
-        // } 
+        $artists = $response['artists'];
+        
+        // assume spotify doesn't mangle the array ordering for us?        
+        $artists_keyval = array();
 
-        // catch (GuzzleException $e) {
-        //     return \Drupal::logger('duckspot')->error($e);
-        // }
+        for($i = 0; $i < $limit; $i++) {
+            $artists_keyval[$artists[$i]['name']] = $ids[$i];
+        }
 
-        return $artists;
-
+        return $artists_keyval;
     }
 
+    /* function to retrieve a single artist's details from the api */
     public function get_artist_details($id)
     {
         $auth = $this->get_auth();

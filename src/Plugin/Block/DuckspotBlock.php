@@ -82,6 +82,7 @@ class DuckspotBlock extends BlockBase
       $limit = 5;
     }
 
+    // artist list will be key/val array of name/id
     $artist_list = $this->helper->get_artists($limit);
 
     return [

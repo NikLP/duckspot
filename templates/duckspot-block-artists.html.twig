@@ -1,14 +1,8 @@
-{{ dump(_context|keys) }}
-{# {{ dump(artists) }} #}
-
-<div{{attributes}}>
+<div {{attributes}}>
 	{{ body_text }}
-  <ul>
-  {% for key, value in artists %}
-		<li>
-      {# <a href="{{ value.url }}">{{ value.name }}</a> - {{ value.genre }} #}
-      <a href="/artist/{{ value }}">{{ value }} </a>
-    </li>
-	{% endfor %}
-  </ul>
+	<ul>
+		{% for name, id in artists %}
+			<li><a href="/artist/{{ id }}">{{ name }}</a></li>
+		{% endfor %}
+	</ul>
 </div>
