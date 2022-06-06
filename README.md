@@ -8,10 +8,10 @@ Having read the Spotify docs about authorisation, and due to limitations in the 
 https://developer.spotify.com/documentation/general/guides/authorization/
 https://developer.spotify.com/documentation/general/guides/authorization/client-credentials/
 
-In duckspot.routing.yml, we use a Base 62 regex to check the validity of the Artist ID passed to the controller, if it doesn’t match this generates a 404. 
+In *duckspot.routing.yml*, I use a Base 62 regex to check the validity of the Artist ID passed to the controller, if it doesn’t match this generates a 404. 
 See https://www.drupal.org/node/2399239, https://en.wikipedia.org/wiki/Base62 after https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids
 
-Also in this file we are using a default value of 1, this is not ideal and ideally needs addressing.
+Also in this file I use a default value of 1, this is not ideal and ideally needs addressing.
 https://www.drupal.org/docs/8/api/routing-system/parameters-in-routes/using-parameters-in-routes
 
 Also it would be nice to be setting the title somewhere other than in this file!!
@@ -23,8 +23,8 @@ In order for this module to be fully functional as a portable unit, it must have
 
 The module cannot at this time use full features of the Spotify API (e.g. obtain user centric data)... because the module does not reside at a fixed address, it has not been possible to access personal levels of the API, such as playlists. If the module was available at a fixed address, it would have been possible to add a form to collect a playlist ID or similar. With this, I could have queried the API and gotten a list of artist IDs. As such, this was not possible with the OAuth client_credentials method, so unfortunately I have had to also hard code the artists IDs in the utility class. This is because of a limitation in the Spotify API that prevents obtaining such information with this OAuth method without using a callback URL, which cannot be submitted without using a domain or similar. If there is a problem or oversight here it's something I could not immediately see a way around, but I didn't have any avenue to enquire about this.
 
-Warnings from verbose - there are one or more warnings coming from PHP when error reporting is set to verbose which I haven't figured out yet
-Help text - the help text is not implemented
+Warnings - there are one or more warnings coming from PHP when error reporting is set to verbose which I haven't had time to identify/rectify
+Help text - the help text is not implemented, as per the spec this should be self-explanatory
 Testing - no unit tests are provided
 Check status of declaration (public, protected etc) - class function and variable declarations are functional but privacy may need adjustment
 
