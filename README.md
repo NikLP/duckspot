@@ -33,30 +33,30 @@ Check status of declaration (public, protected etc) - class function and variabl
 
 This is just a quick breakdown of the spec into some basic tasks, as I wrote them for "rubber ducking" purposes.
 
-### Allow the admin to choose how many Artists they want to display using the FORM API when placing the block into a region. The admin shouldn’t be able to select more than 20 artists.
+#### Allow the admin to choose how many Artists they want to display using the FORM API when placing the block into a region. The admin shouldn’t be able to select more than 20 artists.
 
 Create a custom Drupal module in /web/modules/custom
 Add a custom block (php) class
 Add a number field (NUM) to the block using FAPI
 Enforce a ceiling of 20 on the field using form validation
 
-### Connect to ‘Spotify API’ and bring back the selected number of artists.
+#### Connect to ‘Spotify API’ and bring back the selected number of artists.
 
 Store client credentials
 Get access token
 Create http request with limit of NUM
 Check for errors etc
 
-### Display the Artists in a custom block and be clickable
+#### Display the Artists in a custom block and be clickable
 
 Render request into block output
 Render artist name as link to artist page, with artist ID in the link
 
-### If the user clicks on the Artist URL it should open a new page and display information about that artist on a custom page using routes.
+#### If the user clicks on the Artist URL it should open a new page and display information about that artist on a custom page using routes.
 
 Create routing for the links such that a link of e.g. /artist/[ID] can be handled by the module
 Manage content for the route such that a new page will be displayed when the link is clicked, showing a variety of information about the artist as pulled from the API
 
-### The custom page should have its own permission and should only be accessible by logged in users.
+#### The custom page should have its own permission and should only be accessible by logged in users.
 
 This seems a little ambiguous; “its own permission” implies a permission specific to the module, but “only accessible by logged in users” can be satisfied by checking if the user is authenticated… I have created a custom permission but this must be set by admin after installation.
