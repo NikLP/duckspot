@@ -16,8 +16,12 @@ function duckspot_help($route_name, RouteMatchInterface $route_match) {
     // Help text for the duckspot module.
     case 'help.page.duckspot':
       $output = '';
-      $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Help text here') . '</p>';
+      $output .= '<h3>' . t('Duckspot module') . '</h3>';
+      $output .= '<p>' . t('Enable the module at "/admin/modules".') . '</p>';
+      $output .= '<p>' . t('Add spotify credentials at "/admin/config/duckspot/settings"') . '</p>';
+      $output .= '<p>' . t('Add & configure the block at "/admin/structure/block"') . '</p>';
+      $output .= '<p>' . t('Configure the permissions to view artist pages at "/admin/people/permissions/module/duckspot"') . '</p>';
+      $output .= '<p>' . t('') . '</p>';
       return $output;
 
     default:

@@ -1,6 +1,7 @@
 # 'Duckspot' module
 [Aside, **ignore**] View site in gitpod (local @ gitpod only): gp preview $(gp url 8080)
 
+Enable the Help module to view the module's help page at /admin/people/permissions/module/duckspot.
 
 ## Assertions
 
@@ -11,7 +12,7 @@ https://developer.spotify.com/documentation/general/guides/authorization/client-
 In *duckspot.routing.yml*, I use a Base 62 regex to check the validity of the Artist ID passed to the controller, if it doesn’t match this generates a 404. 
 See https://www.drupal.org/node/2399239, https://en.wikipedia.org/wiki/Base62 after https://developer.spotify.com/documentation/web-api/#spotify-uris-and-ids
 
-Also in this file I use a default value of 1, this is not ideal and ideally needs addressing.
+Also in this file I use a default value of 1 for the artist ID, this is not ideal and ideally needs addressing. Ideally I'd add more checking on the spotify api response.
 https://www.drupal.org/docs/8/api/routing-system/parameters-in-routes/using-parameters-in-routes
 
 Also it would be nice to be setting the title somewhere other than in this file!!

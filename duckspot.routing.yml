@@ -1,12 +1,12 @@
 duckspot.artist:
-  path: '/artist/{id}'
+  path: "/artist/{id}"
   defaults:
     _controller: '\Drupal\duckspot\Controller\DuckspotController::ArtistPage'
-    _title: 'Artist Highlights'
+    _title: "Artist Highlights"
     id: 1
   requirements:
-    _permission: 'access duckspot artist'
-    id: '[a-zA-Z0-9]+'
+    _permission: "access duckspot artist"
+    id: "[a-zA-Z0-9]+"
 
 duckspot.settings_form:
   path: "/admin/config/duckspot/settings"

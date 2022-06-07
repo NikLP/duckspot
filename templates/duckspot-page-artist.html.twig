@@ -1,9 +1,16 @@
 {% set image = artist.images[1] %}
-<h2>{{ artist.name }}</h2>
-<p>Genres :: {{ artist.genres|join(' | ') }}<br />
-Followers :: {{ artist.followers.total }}</p>
+<div {{attributes}}>
+	<h2>{{ artist.name }}</h2>
+	<p>Genres ::
+		{{ artist.genres|join(' | ') }}<br/>
+		Followers ::
+		{{ artist.followers.total }}</p>
 
-<figure>
-  <img src="{{ image.url }}" alt="{{ artist.name }}" width="{{ image.width }}" height="{{ image.height }}">
-  <figcaption><a href="{{ artist.external_urls.spotify }}">{{ artist.name }} @ Spotify</a></figcaption>
-</figure>
+	<figure>
+		<img src="{{ image.url }}" alt="{{ artist.name }}" width="{{ image.width }}" height="{{ image.height }}">
+		<figcaption>
+			<a href="{{ artist.external_urls.spotify }}">{{ artist.name }}
+				@ Spotify</a>
+		</figcaption>
+	</figure>
+</div>
