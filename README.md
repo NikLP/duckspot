@@ -20,21 +20,17 @@ Also it would be nice to be setting the title somewhere other than in this file!
 
 ## Omissions 
 
-Some of this is basic and unforgiveable in my opinion, but as circumstances have been rather unusual, I can only apologise for this, and hope that the explanation(s) below will suffice in the short term. Deeply sorry here.
+Some of this is basic in my opinion, but as circumstances have been rather unusual, I can only apologise for this, and hope that the explanation(s) below will suffice in the short term. Deeply sorry here.
 
-In-line code comments are really a necessity but I haven't had time to go through and perform this. The code is, for the most part, self explantory, however.
+In-line code comments are really a necessity but it isn't currently perfect. The code is, for the most part, self explanatory, however.
 
-Because of the (somewhat out of my control) development environment I've had to use to finish this project, which was also new to me (not great timing on my part, but a necessary step), the tab/spacing is not correct in places as per the Drupal guidelines. This would easily be rectified by correcting this in the IDE config and simply reformatting the content of each code file.
+Because of the development environment I've had to use to finish this project, which was new to me (not great timing on my part, but a necessary step), the tab/spacing may not be correct in places as per the Drupal guidelines. This would easily be rectified by correcting this in the IDE config and simply reformatting the content of each code file.
 
-In order for this module to be fully functional as a portable unit, it must have a distinct admin form to collect and store the spotify client id & secret values. These values are currently hard coded in the utility class (DuckspotHelper). The initial spec did not identify this feature as necessary functionality but that is relatively simple to add.
+The module cannot at this time use full features of the Spotify API (e.g. obtain user centric data)... because the module does not reside at a fixed address, it has not been possible to access personal levels of the API, such as playlists. If the module was available at a fixed address, it would have been possible to add a form to collect a playlist ID or similar. With this, I could have queried the API and gotten a list of artist IDs. As such, this was not possible with the OAuth client_credentials method, so unfortunately I have had to hard code the artists IDs in the utility class. This is because of a limitation in the Spotify API that prevents obtaining such information with this OAuth method without using a callback URL, which cannot be submitted without using a domain or similar. If there is a problem or oversight here it's something I could not immediately see a way around, but I didn't have any avenue to enquire about this.
 
-The module cannot at this time use full features of the Spotify API (e.g. obtain user centric data)... because the module does not reside at a fixed address, it has not been possible to access personal levels of the API, such as playlists. If the module was available at a fixed address, it would have been possible to add a form to collect a playlist ID or similar. With this, I could have queried the API and gotten a list of artist IDs. As such, this was not possible with the OAuth client_credentials method, so unfortunately I have had to also hard code the artists IDs in the utility class. This is because of a limitation in the Spotify API that prevents obtaining such information with this OAuth method without using a callback URL, which cannot be submitted without using a domain or similar. If there is a problem or oversight here it's something I could not immediately see a way around, but I didn't have any avenue to enquire about this.
-
-Front end - The twig markup in the templates is very basic, but functional. Ideally, classes would be added to this to provide for better styling. Additionally of course CSS would be employed to facilitate a better look & feel. A CSS library could easily be added, I would recommend a CSS grid layout.
+Front end - The twig markup in the templates is very basic, but functional. Ideally, classes would be added to this to provide for better styling. Additionally of course CSS would be employed to facilitate a better look & feel. A default CSS library could easily be added, I would recommend a CSS grid layout.
 
 Warnings - there are one or more warnings coming from PHP when error reporting is set to verbose which I haven't had time to identify/rectify
-
-Help text - the help text is not implemented, as per the spec this should be self-explanatory
 
 Testing - no unit tests are provided
 
