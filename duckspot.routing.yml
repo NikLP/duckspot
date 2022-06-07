@@ -7,3 +7,13 @@ duckspot.artist:
   requirements:
     _permission: 'access duckspot artist'
     id: '[a-zA-Z0-9]+'
+
+duckspot.settings_form:
+  path: "/admin/config/duckspot/settings"
+  defaults:
+    _form: '\Drupal\duckspot\Form\DuckspotForm'
+    _title: "Duckspot settings"
+  requirements:
+    _permission: "access administration pages"
+  options:
+    _admin_route: TRUE

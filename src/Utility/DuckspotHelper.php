@@ -13,13 +13,16 @@ class DuckspotHelper
     private $client_id;
     private $client_secret;
     private $artists;
+    private $config;
 
     /* Constructor */
     public function __construct()
     {
         $this->client = \Drupal::httpClient();
-        $this->client_id = 'ea1ebf722c464c3fb8a85f612d42871d';
-        $this->client_secret = 'f84be1b9668743c9a7d015df3170c3b7';
+        $this->config = \Drupal::config('duckspot.settings');  
+        $this->client_id = $this->config->get('client_id'); 
+        $this->client_secret = $this->config->get('client_secret'); 
+
         $this->artists = array(
             '7xGGqA85UIWX1GoTVM4itC', // staple singers (1 of 21)
             '2wzMOQwNT6ZvVB4amvhFAH', // pogues
